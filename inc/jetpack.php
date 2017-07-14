@@ -4,7 +4,7 @@
  *
  * @package Understrap
  * @subpackage Democrats\Inc
- * @since 0.1.0
+ * @since 0.0.1
  */
 
 remove_action( 'after_setup_theme', 'components_jetpack_setup', 99 );

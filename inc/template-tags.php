@@ -4,13 +4,13 @@
  *
  * @package Understrap
  * @subpackage Democrats\Inc
- * @since 0.1.0
+ * @since 0.0.1
  */
 
 /**
  * Renders Posted On Metadata
  *
- * @since 0.1.0
+ * @since 0.0.1
  *
  * @return void
  */
@@ -40,7 +40,7 @@ function understrap_posted_on() {
 /**
  * Renders Taxonomy Metadata
  *
- * @since 0.1.0
+ * @since 0.0.1
  *
  * @return void
  */
