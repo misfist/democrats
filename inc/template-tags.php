@@ -73,3 +73,20 @@ function understrap_entry_footer() {
 		'</span>'
 	);
 }
+
+/**
+ * Display JetPack Share Links
+ * Adds share links where placed
+ *
+ * @since 0.0.1
+ *
+ * @uses sharing_display()
+ * @link https://jetpack.com/2016/04/15/hook-month-customizing-sharing/
+ *
+ * @return void
+ */
+function democrats_jetpack_share() {
+	if ( function_exists( 'sharing_display' ) ) {
+	    sharing_display( '', true );
+	}
+}

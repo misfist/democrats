@@ -39,7 +39,7 @@
 
 	<footer class="entry-footer">
 
-		<?php// understrap_entry_footer(); ?>
+		<?php democrats_jetpack_share(); ?>
 
 	</footer><!-- .entry-footer -->
 
