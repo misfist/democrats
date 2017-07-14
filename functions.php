@@ -22,9 +22,10 @@
  *
  * @package Understrap
  * @subpackage Democrats
- * @since 0.1.0
+ * @since 0.0.1
  */
 
+include_once( trailingslashit( get_stylesheet_directory() ) . 'inc/setup.php' );
 include_once( trailingslashit( get_stylesheet_directory() ) . 'inc/enqueue.php' );
 include_once( trailingslashit( get_stylesheet_directory() ) . 'inc/extras.php' );
 include_once( trailingslashit( get_stylesheet_directory() ) . 'inc/template-tags.php' );

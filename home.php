@@ -30,31 +30,35 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 			<!-- Do the left sidebar check and opens the primary div -->
 			<?php get_template_part( 'global-templates/left-sidebar-check', 'none' ); ?>
 
-			<main class="site-main row" id="main">
+			<main class="site-main" id="main">
 
-				<?php if ( have_posts() ) : ?>
+				<div class="row results">
 
-					<?php /* Start the Loop */ ?>
+					<?php if ( have_posts() ) : ?>
 
-					<?php while ( have_posts() ) : the_post(); ?>
+						<?php /* Start the Loop */ ?>
 
-						<?php
+						<?php while ( have_posts() ) : the_post(); ?>
 
-						/*
-						 * Include the Post-Format-specific template for the content.
-						 * If you want to override this in a child theme, then include a file
-						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-						 */
-						get_template_part( 'loop-templates/content', 'home' );
-						?>
+							<?php
 
-					<?php endwhile; ?>
+							/*
+							 * Include the Post-Format-specific template for the content.
+							 * If you want to override this in a child theme, then include a file
+							 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+							 */
+							get_template_part( 'loop-templates/content', 'grid' );
+							?>
 
-				<?php else : ?>
+						<?php endwhile; ?>
 
-					<?php get_template_part( 'loop-templates/content', 'none' ); ?>
+					<?php else : ?>
 
-				<?php endif; ?>
+						<?php get_template_part( 'loop-templates/content', 'none' ); ?>
+
+					<?php endif; ?>
+
+				</div>
 
 			</main><!-- #main -->
 

@@ -38,13 +38,6 @@ function democrats_load_more_posts() {
     $args['paged'] = intval( $_POST['args']['paged'] );
   }
 
-  // $sticky = get_option( 'sticky_posts' );
-  //
-  // if( $sticky ) {
-  //   $sticky = intval( $sticky[0] );
-  //   $args['post__not_in'] = array( $sticky );
-  // }
-
   $posts_query = new WP_Query( $args );
 
   ob_start();
@@ -54,7 +47,7 @@ function democrats_load_more_posts() {
     while( $posts_query->have_posts() ) :
       $posts_query->the_post();
 
-      get_template_part( 'loop-templates/content', 'home' );
+      get_template_part( 'loop-templates/content', 'grid' );
 
     endwhile;
 
@@ -70,8 +63,6 @@ function democrats_load_more_posts() {
     'paged'           => $posts_query->query_vars['paged'],
     'posts_per_page'  => intval( $posts_query->query_vars['posts_per_page'] ),
     'max_pages'       => ceil( intval( $posts_query->found_posts ) / intval( $posts_query->query_vars['posts_per_page'] ) ),
-    'args'             => $args,
-    'vars'             => $posts_query
   );
 
   wp_send_json( $response );

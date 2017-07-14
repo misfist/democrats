@@ -4,7 +4,9 @@
  *
  * Contains the closing of the #content div and all content after
  *
- * @package understrap
+ * @package Understrap
+ * @subpackage Democrats
+ * @since 0.0.1
  */
 
 $the_theme = wp_get_theme();
@@ -13,41 +15,31 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <?php get_sidebar( 'footerfull' ); ?>
 
-<div class="wrapper" id="wrapper-footer">
+<?php if ( is_active_sidebar( 'footer-info' ) ) : ?>
 
-	<div class="<?php echo esc_html( $container ); ?>">
+	<div class="wrapper" id="wrapper-footer">
 
-		<div class="row">
+		<div class="<?php echo esc_html( $container ); ?>">
 
-			<div class="col-md-12">
+			<div class="row">
 
-				<footer class="site-footer" id="colophon">
+				<div class="col-md-12">
 
-					<div class="site-info">
+					<footer class="site-footer" id="colophon">
 
-							<a href="<?php  echo esc_url( __( 'http://wordpress.org/','understrap' ) ); ?>"><?php printf( 
-							/* translators:*/
-							esc_html__( 'Proudly powered by %s', 'understrap' ),'WordPress' ); ?></a>
-								<span class="sep"> | </span>
-					
-							<?php printf( // WPCS: XSS ok.
-							/* translators:*/
-								esc_html__( 'Theme: %1$s by %2$s.', 'understrap' ), $the_theme->get( 'Name' ),  '<a href="'.esc_url( __('http://understrap.com', 'understrap')).'">understrap.com</a>' ); ?> 
-				
-							(<?php printf( // WPCS: XSS ok.
-							/* translators:*/
-								esc_html__( 'Version: %1$s', 'understrap' ), $the_theme->get( 'Version' ) ); ?>)
-					</div><!-- .site-info -->
+						<?php dynamic_sidebar( 'footer-info' ); ?>
 
-				</footer><!-- #colophon -->
+					</footer><!-- #colophon -->
 
-			</div><!--col end -->
+				</div><!--col end -->
 
-		</div><!-- row end -->
+			</div><!-- row end -->
 
-	</div><!-- container end -->
+		</div><!-- container end -->
 
-</div><!-- wrapper end -->
+	</div><!-- wrapper end -->
+
+<?php endif; ?>
 
 </div><!-- #page -->
 
@@ -56,4 +48,3 @@ $container = get_theme_mod( 'understrap_container_type' );
 </body>
 
 </html>
-
