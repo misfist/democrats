@@ -4,13 +4,13 @@
  *
  * @package Understrap
  * @subpackage Democrats\Inc
- * @since 0.1.0
+ * @since 0.0.1
  */
 
 /**
  * Remove Parent Styles and Scripts
  *
- * @since 0.1.0
+ * @since 0.0.1
  */
 function democrats_remove_parent_scripts() {
     wp_dequeue_style( 'understrap-styles' );
@@ -26,7 +26,7 @@ add_action( 'wp_enqueue_scripts', 'democrats_remove_parent_scripts', 20 );
 /**
  * Enqueue Child Styles and Scripts
  *
- * @since 0.1.0
+ * @since 0.0.1
  */
 function democrats_enqueue_styles() {
 	// Get the theme data

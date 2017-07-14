@@ -1,6 +1,6 @@
 {
   "name": "democrats",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Custom child theme for UnderStrap Theme Framework: https://github.com/holger1411/understrap",
   "main": "index.js",
   "scripts": {

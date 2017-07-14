@@ -4,13 +4,13 @@
  *
  * @package Understrap
  * @subpackage Democrats\Inc
- * @since 0.1.0
+ * @since 0.0.1
  */
 
 /**
  * Add Sidebar Class to Body
  *
- * @since 0.1.09
+ * @since 0.0.1
  *
  * @param {array} $classes
  * @return {array} $classes Modified array of classes
