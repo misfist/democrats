@@ -22,7 +22,7 @@ function democrats_sidebar_body_class( $classes ) {
 add_filter( 'body_class', 'democrats_sidebar_body_class' );
 
 /**
- * Set Number of Posts
+ * Set Main Query Vars
  *
  * @since 0.0.1
  *
@@ -33,27 +33,17 @@ add_filter( 'body_class', 'democrats_sidebar_body_class' );
  * @return void
  */
 function democrats_pre_get_posts( $query ) {
-  if( $query->is_home() && $query->is_main_query() && ! is_admin() ) {
-    $posts_per_page = get_option( 'posts_per_page', 4 );
-    $query->set( 'posts_per_page', $posts_per_page );
+  if( $query->is_home() && $query->is_main_query() ) {
+    $sticky = get_option( 'sticky_posts' );
+
+    /**
+     * Sticky posts are prepended to post object by default and `post__not_in` is not respected
+     * This causes pagination issues and will make the most recent sticky (featured post) repeat
+     * @link https://codex.wordpress.org/Class_Reference/WP_Query#Post_.26_Page_Parameters
+     */
+    if( $sticky ) {
+      $query->set( 'ignore_sticky_posts', true );
+    }
   }
 }
 add_action( 'pre_get_posts', 'democrats_pre_get_posts' );
-
-/**
- * Set Post Limits
- * Override default 5 posts
- *
- * @since 0.0.1
- *
- * @param {string} $limit
- * @param {obj} $query
- * @return {string} $limit
- */
-function democrats_post_limits( $limit, $query ) {
-	if( $query->is_home() && $query->is_main_query() && ! is_admin() ){
-		return 'LIMIT 0, 4';
-	}
-	return $limit;
-}
-add_filter( 'post_limits', 'democrats_post_limits', 10, 2 );

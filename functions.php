@@ -31,3 +31,4 @@ include_once( trailingslashit( get_stylesheet_directory() ) . 'inc/extras.php' )
 include_once( trailingslashit( get_stylesheet_directory() ) . 'inc/template-tags.php' );
 include_once( trailingslashit( get_stylesheet_directory() ) . 'inc/jetpack.php' );
 include_once( trailingslashit( get_stylesheet_directory() ) . 'inc/load-more.php' );
+include_once( trailingslashit( get_stylesheet_directory() ) . 'inc/helpers.php' );
