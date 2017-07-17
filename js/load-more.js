@@ -10,7 +10,8 @@
   buttonContainer.append(buttonContent);
   var buttonEl = $( '#infinite-scroll button' );
 
-  var nextPage = 2;
+  var page = 2;
+  var loading = false;
 
   /**
    * Load More Event
@@ -18,22 +19,20 @@
   buttonEl.click(function(event) {
     event.preventDefault();
 
-    var $this = $( this );
-    var data = $this[0].dataset;
+    if( ! loading ) {
+      loading = true;
 
-    var args = {};
+      var args = {
+        query:  democrats_load_more.query
+      };
 
-    args.posts_per_page =  democrats_load_more.posts_per_page;
-    args.paged = nextPage;
-
-    console.log( 'args', args );
-
-    get_posts(args);
+      get_posts(args);
+    }
 
   });
 
   /**
-   * Get Posts
+   * Get Posts Function
    * @param  obj args
    * @return obj response
    */
@@ -44,28 +43,22 @@
       data: {
         action: 'do_democrats_load_more_posts',
         nonce: democrats_load_more.nonce,
-        args: args
+        page: page,
+        query: args.query
       },
       type: 'POST'
     })
     .success(function(response, textStatus, XMLHttpRequest) {
+      //console.log( 'response', response, args);
+      contentEl.append( response.content );
 
-      console.log( 'response', response );
+      //Increment pager
+      page++;
+      loading = false;
+      buttonEl.attr( 'data-paged', page );
 
-      //If a paged request, append posts
-      if( response.paged ) {
-        contentEl.append( response.content );
-
-        //Increment pager
-        nextPage++;
-        buttonEl.attr( 'data-paged', nextPage );
-
-      }
-
-      // Disable Load More
-      // If there is only 1 page of posts or is last page, disable the button
-      if( 1 === response.max_pages || response.max_pages <= response.paged ) {
-        buttonEl.prop( 'disabled', true );
+      if( response.current_page >= response.max_pages ) {
+        buttonEl.attr( 'disabled', 'disabled' );
       }
 
     })
